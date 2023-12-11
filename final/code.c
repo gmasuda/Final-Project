@@ -4,7 +4,7 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <sys/stat.h>
-#include <direct.h>
+#include <fcntl.h>
 void scanDirectory(const char *path);
 int txtToMap(const char *filename);
 
