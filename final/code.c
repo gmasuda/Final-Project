@@ -110,7 +110,7 @@ int positionToFolder(const char *filename)
         for (int j = 0; j < SIZE_OF_MAP; j++)
         {
 
-            snprintf(folderName, sizeof(folderName), "C:/Users/likapichu/Desktop/Code/2600/final/World/%c%d%d", modifier, i, j);
+            snprintf(folderName, sizeof(folderName), "/home/garrett_masuda9/Final-Project/%c%d%d", modifier, i, j);
             if (_mkdir(folderName) != 0)
             {
                 perror("mkdir");
