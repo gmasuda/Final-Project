@@ -4,14 +4,12 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <sys/stat.h>
-#include <fcntl.h>
+
 void scanDirectory(const char *path);
 int txtToMap(const char *filename);
 
 #define SIZE_OF_MAP 10
 int map[SIZE_OF_MAP][SIZE_OF_MAP];
-
-
 
 int main()
 {
@@ -73,23 +71,30 @@ int printMap()
     }
     return 0;
 }
+
 int *findNeighboringPoints(int x, int y)
 {
     static int neighbors[4];
-    //5 stands for out of bounds
-    neighbors[0] = (x - 1 >= 0) ? map[x - 1][y] : 5; 
+    // 5 stands for out of bounds
+    neighbors[0] = (x - 1 >= 0) ? map[x - 1][y] : 5;
     neighbors[1] = (x + 1 < SIZE_OF_MAP) ? map[x + 1][y] : 5;
     neighbors[2] = (y - 1 >= 0) ? map[x][y - 1] : 5;
     neighbors[3] = (y + 1 < SIZE_OF_MAP) ? map[x][y + 1] : 5;
 
     return neighbors;
 }
+
 int createTxt(const char *folderName, int i, int j)
 {
     char folderName2[256];
-
     snprintf(folderName2, sizeof(folderName2), "%s/neighboring_points.txt", folderName);
     FILE *fp = fopen(folderName2, "w");
+
+    if (fp == NULL)
+    {
+        perror("fopen");
+        return -1;
+    }
 
     int *neighboringPoints = findNeighboringPoints(i, j);
     char content[256];
@@ -98,6 +103,7 @@ int createTxt(const char *folderName, int i, int j)
     fputs(content, fp);
 
     fclose(fp);
+    return 0;
 }
 
 int positionToFolder(const char *filename)
@@ -109,9 +115,8 @@ int positionToFolder(const char *filename)
     {
         for (int j = 0; j < SIZE_OF_MAP; j++)
         {
-
-            snprintf(folderName, sizeof(folderName), "/home/garrett_masuda9/Final-Project/%c%d%d", modifier, i, j);
-            if (_mkdir(folderName) != 0)
+            snprintf(folderName, sizeof(folderName), "./%c%d%d", modifier, i, j);
+            if (mkdir(folderName, 0777) != 0)
             {
                 perror("mkdir");
             }
@@ -154,4 +159,3 @@ int txtToMap(const char *filename)
     positionToFolder(filename);
     return 0;
 }
-
