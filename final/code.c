@@ -24,6 +24,8 @@ void scanDirectory(const char *path)
     DIR *dir;
     struct dirent *entry;
 
+    char subPath[512];  // Increase the buffer size
+
     if ((dir = opendir(path)) == NULL)
     {
         perror("opendir");
@@ -36,7 +38,7 @@ void scanDirectory(const char *path)
         {
             continue;
         }
-        char subPath[256];
+
         snprintf(subPath, sizeof(subPath), "%s/%s", path, entry->d_name);
 
         DIR *subDir = opendir(subPath);
@@ -58,6 +60,7 @@ void scanDirectory(const char *path)
 
     closedir(dir);
 }
+
 
 int printMap()
 {
