@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
-#include <sys/stat.h>
 #include <dirent.h>
 
 char modifier = 'e';
@@ -15,10 +14,12 @@ void navigate(char *currentFolder, int deltaY, int deltaX)
     x += deltaX;
     y += deltaY;
 
+    
     char nextFolder[256];
     char parentFolder[256];
 
     snprintf(parentFolder, sizeof(parentFolder), "/home/garrett_masuda9/Final-Project/final/World");
+
 
     snprintf(nextFolder, sizeof(nextFolder), "%s/%c%d%d", parentFolder, modifier, x, y);
 
