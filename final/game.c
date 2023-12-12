@@ -18,7 +18,7 @@ void navigate(char *currentFolder, int deltaY, int deltaX)
     char nextFolder[256];
     char parentFolder[256];
 
-    snprintf(parentFolder, sizeof(parentFolder), "C:/Users/likapichu/Desktop/Code/2600/final/World");
+    snprintf(parentFolder, sizeof(parentFolder), "/home/garrett_masuda9/Final-Project/final/World");
 
 
     snprintf(nextFolder, sizeof(nextFolder), "%s/%c%d%d", parentFolder, modifier, x, y);
@@ -60,7 +60,7 @@ int readTxt(const char *filename, int directions[4])
 int navigateWorld()
 {
     char currentFolder[256];
-    strcpy(currentFolder, "C:/Users/likapichu/Desktop/Code/2600/final/World/e00");
+    strcpy(currentFolder, "/home/garrett_masuda9/Final-Project/final/World/e00");
 
     while (1)
     {
