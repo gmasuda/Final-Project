@@ -10,7 +10,7 @@
 #include <netinet/in.h>
 
 //Sockets
-#define PORT 8888
+#define PORT 1883
 #define MAX_LEN 1024
 
 //For MQTT
