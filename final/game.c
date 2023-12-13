@@ -15,8 +15,8 @@ void navigate(char *currentFolder, int deltaY, int deltaX)
     y += deltaY;
 
     
-    char nextFolder[256];
-    char parentFolder[256];
+    char nextFolder[280];
+    char parentFolder[279];
 
     snprintf(parentFolder, sizeof(parentFolder), "/home/garrett_masuda9/Final-Project/final/World");
 
