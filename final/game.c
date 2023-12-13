@@ -14,7 +14,7 @@
 #define MAX_LEN 1024
 
 //For MQTT
-#define MQTT_HOST "serverIP"
+#define MQTT_HOST "34.136.238.197"
 #define MQTT_PORT 1883
 
 // Megan: C:/Users/megan/SchoolWork/GIT/final/World
@@ -87,7 +87,7 @@ void navigate(char *currentFolder, int deltaY, int deltaX)
     char nextFolder[256];
     char parentFolder[256];
 
-    snprintf(parentFolder, sizeof(parentFolder), "C:/Users/megan/SchoolWork/GIT/final/World");
+    snprintf(parentFolder, sizeof(parentFolder), "/home/garrett_masuda9/Final-Project/final/World");
 
     snprintf(nextFolder, sizeof(nextFolder), "%s/%c%d%d", parentFolder, modifier, x, y);
 
@@ -152,7 +152,7 @@ char * grabMessage(const char *filename, char message[16]){
 int navigateWorld()
 {
     char currentFolder[256];
-    strcpy(currentFolder, "/home/meganbee/Final-Project/final/World/e00");
+    strcpy(currentFolder, "/home/garrett_masuda9/Final-Project/final/World/e00");
 
     struct mosquitto * mosq = NULL;
     const char *topic = "transferMessage";
